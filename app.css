@@ -25,4 +25,12 @@
     box-sizing: border-box;
     width: calc(95% / 16);
     aspect-ratio: 1 / 1;
+
+    transition: background-color 2s ease 0.4s;
+}
+
+.cell:hover {
+    background-color: coral;
+    transition: background-color 0.2s ease;
+    /* transform: scale(2); */
 }
