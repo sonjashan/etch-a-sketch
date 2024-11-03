@@ -5,11 +5,14 @@
 }
 
 
-.row {
+.container {
     background-color: thistle;
     border: 1px solid purple;
-    /* display: flex; */
-    padding: 0 1em;
+    padding: 1em;
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: center;
+    flex-wrap: wrap;
 
 
 }
@@ -19,4 +22,7 @@
     border: 1px solid plum;
     padding: 1em;
     display: inline-block;
+    box-sizing: border-box;
+    width: calc(95% / 16);
+    aspect-ratio: 1 / 1;
 }
