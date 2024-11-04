@@ -1,6 +1,14 @@
 'use strict';
 
-const containerEl = document.querySelector(".container");
+const mainEl = document.querySelector("main");
+const btnEl = document.createElement("button");
+btnEl.textContent = "New Board";
+mainEl.appendChild(btnEl);
+
+const containerEl = document.createElement("div");
+containerEl.classList.add("container");
+mainEl.appendChild(containerEl);
+
 for (let i = 0; i < 16; i++) {
     // const rowDivEl = document.createElement("div");
     // rowDivEl.classList.add("row");

@@ -34,3 +34,26 @@
     transition: background-color 0.2s ease;
     /* transform: scale(2); */
 }
+
+button {
+    font-size: 1em;
+    padding: 1em 2em;
+    border: 2px solid purple;
+    border-radius: 10px;
+    display: block;
+    margin: 10px auto;
+    color: purple;
+    background: mistyrose;
+    transition: color .25s, transform .25s, background-color .25s, box-shadow .25s;
+}
+
+button:hover {
+    color: white;
+    background-color: purple;
+
+    box-shadow: 0 .5em .5em -.4em purple;
+
+    transform: translateY(-.25em);
+
+    cursor: pointer;
+}
