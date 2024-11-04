@@ -36,12 +36,16 @@
     transition: background-color 0.05s ease;
 } */
 
+.choices {
+    display: flex;
+}
+
 button {
     font-size: 1em;
     padding: 1em 2em;
     border: 2px solid purple;
     border-radius: 10px;
-    display: block;
+    display: inline-block;
     margin: 10px auto;
     color: purple;
     background: mistyrose;
