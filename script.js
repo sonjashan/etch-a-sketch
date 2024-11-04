@@ -71,7 +71,7 @@ newBtnEL.addEventListener("click", function () {
     init(size);
 });
 
-colorBtnEl.addEventListener("click", () => colorMode = true);
+colorBtnEl.addEventListener("click", () => colorMode = !colorMode);
 
 function clearCell(cell) {
     cell.style.backgroundColor = `#fff`;
