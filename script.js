@@ -35,7 +35,7 @@ Please input a number between 1 and 100.`));
 //     drawBoard(rowSize, colSize);
 // });
 
-document.querySelector(".colormode").addEventListener("click", () => colorMode = !colorMode);
+document.querySelector(".colormode").addEventListener("click", () => colorMode = true);
 
 
 drawBoard(16, 16);
@@ -68,3 +68,9 @@ const colorCell = function (cell) {
 
 let cellsEl = document.querySelectorAll(".cell");
 cellsEl.forEach(colorCell);
+
+function clearCell(cell) {
+    cell.style.backgroundColor = `#fff`;
+}
+
+document.querySelector(".clearboard").addEventListener("click", () => cellsEl.forEach(clearCell));
