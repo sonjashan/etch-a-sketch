@@ -1,5 +1,7 @@
 'use strict';
 
+let colorMode = false;
+
 const mainEl = document.querySelector("main");
 
 function drawBoard(rowNum, colNum) {
@@ -40,15 +42,23 @@ function colorRandom() {
     return Math.floor(Math.random() * 256);
 }
 
-// click and drag mouse give a trail of random colours
 let isMouseDown = false;
 
 const colorCell = function (cell) {
     cell.addEventListener("mousedown", () => isMouseDown = true);
     cell.addEventListener("mouseup", () => isMouseDown = false);
     cell.addEventListener("mouseout", function () {
-        if (isMouseDown) {
+        if (colorMode && isMouseDown) {
             cell.style.backgroundColor = `rgb(${colorRandom()} ${colorRandom()} ${colorRandom()})`;
+        } else if (!colorMode) {
+            cell.classList.remove("hoverin");
+            cell.classList.add("hoverout");
+        }
+    });
+    cell.addEventListener("mouseenter", function () {
+        if (!colorMode) {
+            cell.classList.remove("hoverout");
+            cell.classList.add("hoverin");
         }
     });
 };

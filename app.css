@@ -36,6 +36,15 @@
     transition: background-color 0.05s ease;
 } */
 
+.hoverin {
+    background-color: coral;
+    transition: background-color 0s ease;
+}
+
+.hoverout {
+    transition: background-color 3.5s ease 0.8s;
+}
+
 .choices {
     display: flex;
 }
