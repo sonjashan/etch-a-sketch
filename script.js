@@ -35,6 +35,8 @@ Please input a number between 1 and 100.`));
 //     drawBoard(rowSize, colSize);
 // });
 
+document.querySelector(".colormode").addEventListener("click", () => colorMode = !colorMode);
+
 
 drawBoard(16, 16);
 
@@ -49,6 +51,7 @@ const colorCell = function (cell) {
     cell.addEventListener("mouseup", () => isMouseDown = false);
     cell.addEventListener("mouseout", function () {
         if (colorMode && isMouseDown) {
+            cell.classList.remove("hoverout");
             cell.style.backgroundColor = `rgb(${colorRandom()} ${colorRandom()} ${colorRandom()})`;
         } else if (!colorMode) {
             cell.classList.remove("hoverin");
