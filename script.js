@@ -1,12 +1,17 @@
 'use strict';
 
 let colorMode = false;
+let isMouseDown = false;
+let cellsEl;
+let newBtnEL = document.querySelector(".newboard");
+let clearBtnEl = document.querySelector(".clearboard");
+let colorBtnEl = document.querySelector(".colormode");
 
-const mainEl = document.querySelector("main");
 
 function drawBoard(rowNum, colNum) {
     const containerEl = document.createElement("div");
     containerEl.classList.add("container");
+    const mainEl = document.querySelector("main");
     mainEl.appendChild(containerEl);
 
     for (let i = 0; i < rowNum; i++) {
@@ -19,40 +24,17 @@ function drawBoard(rowNum, colNum) {
     }
 }
 
-function getSize(ifRow) {
-    let size;
-    do {
-        size = Number(prompt(`How many ${ifRow ? 'ROWs' : 'COLUMNs'} for the new board?
-Please input a number between 1 and 100.`));
-    } while (Number.isNaN(size) || size < 1 || size > 100);
-    return size;
-}
-
-// newBtnEl.addEventListener("click", function () {
-//     let rowSize = getSize(true);
-//     let colSize = getSize(false);
-//     document.querySelector(".container").remove();
-//     drawBoard(rowSize, colSize);
-// });
-
-document.querySelector(".colormode").addEventListener("click", () => colorMode = true);
-
-
-drawBoard(16, 16);
-
-function colorRandom() {
+function randRGB() {
     return Math.floor(Math.random() * 256);
 }
 
-let isMouseDown = false;
-
-const colorCell = function (cell) {
+function colorCell(cell) {
     cell.addEventListener("mousedown", () => isMouseDown = true);
     cell.addEventListener("mouseup", () => isMouseDown = false);
     cell.addEventListener("mouseout", function () {
         if (colorMode && isMouseDown) {
             cell.classList.remove("hoverout");
-            cell.style.backgroundColor = `rgb(${colorRandom()} ${colorRandom()} ${colorRandom()})`;
+            cell.style.backgroundColor = `rgb(${randRGB()} ${randRGB()} ${randRGB()})`;
         } else if (!colorMode) {
             cell.classList.remove("hoverin");
             cell.classList.add("hoverout");
@@ -66,11 +48,32 @@ const colorCell = function (cell) {
     });
 };
 
-let cellsEl = document.querySelectorAll(".cell");
-cellsEl.forEach(colorCell);
+function init(size) {
+    drawBoard(size, size);
+    cellsEl = document.querySelectorAll(".cell");
+    cellsEl.forEach(colorCell);
+}
+
+function getSize() {
+    let size;
+    do {
+        size = Number(prompt(`How many squares per line for the new board?
+Please input a number between 1 and 100.`));
+    } while (Number.isNaN(size) || size < 1 || size > 100);
+    return size;
+}
+
+init(16);
+
+newBtnEL.addEventListener("click", function () {
+    document.querySelector(".container").remove();
+    let size = getSize();
+    init(size);
+});
+
+colorBtnEl.addEventListener("click", () => colorMode = true);
 
 function clearCell(cell) {
     cell.style.backgroundColor = `#fff`;
 }
-
-document.querySelector(".clearboard").addEventListener("click", () => cellsEl.forEach(clearCell));
+clearBtnEl.addEventListener("click", () => cellsEl.forEach(clearCell));
