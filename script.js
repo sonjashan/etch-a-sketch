@@ -12,10 +12,10 @@ function drawBoard(rowNum, colNum) {
 
     for (let i = 0; i < rowNum; i++) {
         for (let j = 0; j < colNum; j++) {
-            const cellDivEl = document.createElement("div");
-            cellDivEl.classList.add("cell");
-            cellDivEl.style.width = `${100 / colNum}%`;
-            containerEl.appendChild(cellDivEl);
+            const oneCellEl = document.createElement("div");
+            oneCellEl.classList.add("cell");
+            oneCellEl.style.width = `${100 / colNum}%`;
+            containerEl.appendChild(oneCellEl);
         }
     }
 }
@@ -36,4 +36,17 @@ btnEl.addEventListener("click", function () {
     drawBoard(rowSize, colSize);
 });
 
+
 drawBoard(16, 16);
+
+function colorRandom() {
+    return Math.floor(Math.random() * 256);
+}
+
+const colorCell = function (cell) {
+    cell.addEventListener("click",
+        () => cell.style.backgroundColor = `rgb(${colorRandom()} ${colorRandom()} ${colorRandom()})`);
+};
+
+let cellsEl = document.querySelectorAll(".cell");
+cellsEl.forEach(colorCell);
