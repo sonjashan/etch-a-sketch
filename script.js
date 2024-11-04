@@ -75,6 +75,6 @@ colorBtnEl.addEventListener("click", () => colorMode = !colorMode);
 
 function clearCell(cell) {
     cell.classList.remove("hoverout");
-    cell.style.backgroundColor = `#fff`;
+    cell.style.removeProperty("background-color");
 }
 clearBtnEl.addEventListener("click", () => cellsEl.forEach(clearCell));

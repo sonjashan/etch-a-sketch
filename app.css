@@ -64,10 +64,9 @@ button {
 button:hover {
     color: white;
     background-color: purple;
+    cursor: pointer;
 
     box-shadow: 0 .5em .5em -.4em purple;
 
     transform: translateY(-.25em);
-
-    cursor: pointer;
 }
