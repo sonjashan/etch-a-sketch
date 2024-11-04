@@ -43,9 +43,17 @@ function colorRandom() {
     return Math.floor(Math.random() * 256);
 }
 
+// click and drag mouse give a trail of random colours
+let isMouseDown = false;
+
 const colorCell = function (cell) {
-    cell.addEventListener("click",
-        () => cell.style.backgroundColor = `rgb(${colorRandom()} ${colorRandom()} ${colorRandom()})`);
+    cell.addEventListener("mousedown", () => isMouseDown = true);
+    cell.addEventListener("mouseup", () => isMouseDown = false);
+    cell.addEventListener("mouseout", function () {
+        if (isMouseDown) {
+            cell.style.backgroundColor = `rgb(${colorRandom()} ${colorRandom()} ${colorRandom()})`;
+        }
+    });
 };
 
 let cellsEl = document.querySelectorAll(".cell");

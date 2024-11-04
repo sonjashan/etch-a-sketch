@@ -28,7 +28,7 @@
     width: calc(100% / 16);
     aspect-ratio: 1 / 1;
 
-    transition: background-color 3.5s ease 0.8s;
+    /* transition: background-color 3.5s ease 0.8s; */
 }
 
 /* .cell:hover {
